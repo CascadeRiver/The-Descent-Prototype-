@@ -1,0 +1,82 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bwrr0yo81a23n"]
+
+[ext_resource type="Texture2D" uid="uid://dgwi8k18oduao" path="res://sprites/rover_sprite_sheet.png" id="1_o2w6p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8ymh"]
+atlas = ExtResource("1_o2w6p")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ybk"]
+atlas = ExtResource("1_o2w6p")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqmod"]
+atlas = ExtResource("1_o2w6p")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs8mk"]
+atlas = ExtResource("1_o2w6p")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwx0s"]
+atlas = ExtResource("1_o2w6p")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlrl1"]
+atlas = ExtResource("1_o2w6p")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3jcd"]
+atlas = ExtResource("1_o2w6p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkqv4"]
+atlas = ExtResource("1_o2w6p")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8ymh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76ybk")
+}],
+"loop": 1,
+"name": &"moving_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqmod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs8mk")
+}],
+"loop": 1,
+"name": &"moving_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwx0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlrl1")
+}],
+"loop": 1,
+"name": &"moving_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3jcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkqv4")
+}],
+"loop": 1,
+"name": &"moving_up",
+"speed": 5.0
+}]

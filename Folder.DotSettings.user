@@ -1,0 +1,4 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/Environment/Hierarchy/Build/BuildTool/RecentBuildToolPaths/=C_003A_005CUsers_005Clegion_005CDocuments_005CApps_005CGodot_0020Development_0020Studio_005Cdescent_002Dupon_002Dsubterannia_005C_002Egodot_005Cmono_005Ctemp_005Cobj_005CDebug_005CDescent_0020Upon_0020Subterannia_002EAssemblyInfo_002Ecs/@EntryIndexedValue">True</s:Boolean>
+	
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Program Files\JetBrains\JetBrains Rider 2026.2.3.1\tools\MSBuild\Current\Bin\amd64\MSBuild.exe</s:String></wpf:ResourceDictionary>

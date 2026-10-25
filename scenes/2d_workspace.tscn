@@ -1,0 +1,142 @@
+[gd_scene format=4 uid="uid://bgbk5lynru57g"]
+
+[ext_resource type="Script" uid="uid://tkufomrso5x8" path="res://resources/PlayableCharacter.cs" id="1_5bpc2"]
+[ext_resource type="AudioStream" uid="uid://cbq7s0snnfq7q" path="res://audio/Motor.wav" id="1_b3grr"]
+[ext_resource type="Script" uid="uid://besnwr20ksg12" path="res://scenes/Quit.cs" id="1_tr7iv"]
+[ext_resource type="SpriteFrames" uid="uid://bwrr0yo81a23n" path="res://animations/rover_moving.tres" id="2_6lb0m"]
+[ext_resource type="Script" uid="uid://ch5042udtubh8" path="res://scenes/BasicAnimations.cs" id="4_5bpc2"]
+[ext_resource type="Texture2D" uid="uid://nam8y0wd4uyn" path="res://sprites/rocks.png" id="5_p2vgm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0x28"]
+bg_color = Color(0.75686276, 0.19215687, 0.3019608, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a830d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tr7iv"]
+texture = ExtResource("5_p2vgm")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+
+[sub_resource type="TileSet" id="TileSet_a830d"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Rock 0"
+terrain_set_0/terrain_0/color = Color(0, 0, 0.34509805, 1)
+sources/0 = SubResource("TileSetAtlasSource_tr7iv")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2vgm"]
+texture = ExtResource("5_p2vgm")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_tr7iv"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Rock 0"
+terrain_set_0/terrain_0/color = Color(0, 0, 0.34509805, 1)
+sources/0 = SubResource("TileSetAtlasSource_p2vgm")
+
+[node name="2DWorkspace" type="Node2D" unique_id=2049567580]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=355820025]
+texture_filter = 1
+zoom = Vector2(3, 3)
+
+[node name="UI" type="Control" parent="." unique_id=1018019106]
+z_index = 10
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="PanelContainer" type="PanelContainer" parent="UI" unique_id=170250385]
+layout_mode = 0
+offset_left = -180.0
+offset_top = 80.0
+offset_right = -40.0
+offset_bottom = 100.0
+
+[node name="Label" type="Label" parent="UI/PanelContainer" unique_id=279056321]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "[Use arrow keys to move]"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="UI" unique_id=462644789]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 80.0
+offset_right = 186.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_j0x28")
+action_mode = 0
+text = "QUIT"
+icon_alignment = 1
+script = ExtResource("1_tr7iv")
+
+[node name="PhysicalSpace" type="Node2D" parent="." unique_id=662265870]
+light_mask = 2
+visibility_layer = 2
+
+[node name="PlayableCharacter" type="CharacterBody2D" parent="PhysicalSpace" unique_id=2012876287 node_paths=PackedStringArray("audioPlayer")]
+light_mask = 2
+visibility_layer = 2
+z_index = 2
+script = ExtResource("1_5bpc2")
+walkSpeed = 100
+audioPlayer = NodePath("AudioStreamPlayer2D")
+metadata/_custom_type_script = "uid://tkufomrso5x8"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PhysicalSpace/PlayableCharacter" unique_id=495919864]
+stream = ExtResource("1_b3grr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PhysicalSpace/PlayableCharacter" unique_id=381919220]
+scale = Vector2(1.2, 1.2)
+sprite_frames = ExtResource("2_6lb0m")
+animation = &"moving_up"
+script = ExtResource("4_5bpc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicalSpace/PlayableCharacter" unique_id=1728816364]
+position = Vector2(0, 5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_a830d")
+
+[node name="Flooring" type="TileMapLayer" parent="PhysicalSpace" unique_id=407926773]
+tile_map_data = PackedByteArray("AAAAAP//AAABAAAAAAD/////AAABAAEAAAD+////AAAAAAEAAAD+/wAAAAABAAEAAAD//wAAAAABAAAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAACAAEAAAAAAAAAAAABAAEAAAABAAAAAAABAAIAAAAAAAAAAAAAAAIAAAABAAEAAAD//wIAAAAAAAEAAAD+/wIAAAABAAEAAAD9/wIAAAABAAEAAAD9/wEAAAAAAAEAAAD+/wEAAAABAAEAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAD///7/AAAAAAAAAAD+//7/AAABAAEAAAD9//7/AAAAAAEAAAD8////AAABAAAAAAD8/wAAAAABAAEAAAD9/wAAAAABAAAAAAD9////AAAAAAEAAAD8//7/AAAAAAEAAAD7/wAAAAABAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAABAAEAAAD7/wEAAAABAAAAAAD7/wIAAAABAAAAAAD8/wEAAAAAAAEAAAD8/wIAAAABAAAAAAD7////AAAAAAAAAAD7//7/AAAAAAAAAAD6//7/AAABAAAAAAD6////AAAAAAAAAAD6//3/AAAAAAEAAAD7//3/AAAAAAAAAAD8//3/AAABAAEAAAD9//3/AAABAAEAAAD+//3/AAABAAEAAAD///3/AAAAAAAAAAD///z/AAAAAAEAAAAAAPz/AAABAAEAAAABAP3/AAAAAAEAAAABAP7/AAAAAAAAAAABAP//AAABAAEAAAAAAP7/AAAAAAEAAAAAAP3/AAABAAEAAAACAAIAAAAAAAAAAAADAAIAAAAAAAEAAAADAAEAAAAAAAEAAAADAAAAAAAAAAAAAAADAP//AAABAAEAAAADAP7/AAAAAAEAAAACAP7/AAABAAAAAAACAP//AAAAAAAAAAD7//z/AAABAAAAAAD6//z/AAAAAAAAAAD8//z/AAABAAAAAAD9//z/AAAAAAEAAAD+//z/AAAAAAAAAAADAP3/AAAAAAAAAAADAPz/AAABAAAAAAACAPz/AAAAAAEAAAABAPz/AAABAAAAAAACAP3/AAABAAEAAAD4//3/AAABAAEAAAD4//7/AAABAAAAAAD4////AAABAAEAAAD5//7/AAAAAAAAAAD5//3/AAABAAEAAAADAPv/AAABAAEAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAEAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAEAP//AAAAAAAAAAADAAMAAAABAAEAAAACAAMAAAABAAEAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAABAAEAAAD+/wMAAAABAAAAAAD6/wIAAAAAAAAAAAD5/wAAAAABAAEAAAD5////AAAAAAAAAAD3//7/AAAAAAAAAAD3////AAABAAAAAAD2//3/AAAAAAAAAAD2//z/AAAAAAEAAAD1//z/AAABAAAAAAD3//z/AAABAAEAAAD3//v/AAAAAAAAAAD4//v/AAABAAAAAAD5//v/AAABAAAAAAD5//r/AAAAAAAAAAD6//r/AAABAAAAAAD7//r/AAAAAAEAAAD7//v/AAAAAAAAAAD8//v/AAABAAEAAAD9//v/AAABAAAAAAD+//v/AAABAAAAAAD5//z/AAAAAAAAAAD4//z/AAAAAAAAAAD3//3/AAAAAAEAAAD9/wMAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAMAAAABAAEAAAAGAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAABAAAAAAAEAAIAAAABAAAAAAAEAAMAAAAAAAAAAAD5/wIAAAAAAAAAAAD4/wIAAAAAAAEAAAD4/wEAAAABAAEAAAD3/wEAAAABAAAAAAD3/wAAAAAAAAEAAAD4/wAAAAAAAAAAAAD5/wEAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAAAAAAAAAAFAAIAAAAAAAEAAAAGAAAAAAABAAEAAAAGAP//AAABAAEAAAAHAP//AAABAAAAAAAIAP//AAAAAAEAAAAIAP7/AAABAAEAAAAJAP7/AAABAAEAAAAJAP3/AAAAAAEAAAAIAP3/AAAAAAEAAAAHAP3/AAABAAAAAAAHAP7/AAABAAAAAAAGAP7/AAABAAEAAAAFAP7/AAABAAAAAAD///v/AAABAAEAAAA=")
+tile_set = SubResource("TileSet_a830d")
+
+[node name="Borders" type="TileMapLayer" parent="PhysicalSpace" unique_id=2138245380]
+visible = false
+modulate = Color(0, 0, 0, 1)
+tile_map_data = PackedByteArray("AAD6//v/AAAAAAAAAAD8//r/AAAAAAAAAAD9//r/AAAAAAAAAAD+//r/AAAAAAAAAAD///r/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAPz/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAPz/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD4/wMAAAAAAAAAAAD3/wIAAAAAAAAAAAD2/wEAAAAAAAAAAAD2/wAAAAAAAAAAAAD2////AAAAAAAAAAD2//7/AAAAAAAAAAD1//3/AAAAAAAAAAD0//z/AAAAAAAAAAD1//v/AAAAAAAAAAD2//v/AAAAAAAAAAD3//r/AAAAAAAAAAD4//r/AAAAAAAAAAD5//n/AAAAAAAAAAD6//n/AAAAAAAAAAD7//n/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_tr7iv")
